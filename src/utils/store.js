@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import db from './firebase';
 
 Vue.use(Vuex);
 
@@ -19,20 +20,23 @@ export default new Vuex.Store({
       }
 
       if (!item.value) return;
-
-      state.itemsList.splice(item.index, 0, {checked: false, value: item.value});
+      item.id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      state.itemsList.splice(item.index, 0, item);
     },
 
     removeItem: (state, item) => {
       let itemIndex = state.itemsList.indexOf(item);
+      if (itemIndex < 0) return;
       state.itemsList.splice(itemIndex, 1);
+    },
+
+    updateItem: (state, payload) => {
+      let itemIndex = state.itemsList.indexOf(payload.item);
+      state.itemsList[itemIndex].value = payload.value;
     },
 
     toggleItem: (state, item) => {
       let itemIndex = state.itemsList.indexOf(item);
-      window.console.log(item);
-      window.console.log(itemIndex);
-      window.console.log(state.itemsList[itemIndex]);
       state.itemsList[itemIndex].checked = !state.itemsList[itemIndex].checked;
     },
 
@@ -41,8 +45,14 @@ export default new Vuex.Store({
   actions: {
     initItemList: ({ commit }) => {
       commit('clearStore');
-      const {data} = require('../assets/data.json');
-      data.forEach(item => commit('addItem', {value: item, index: 0}));
+      db.ref('todo-list')
+        .once('value')
+        .then(data => {
+          let val = data.val();
+          for (let item in val) {
+            commit('addItem', val[item]);
+          }
+        });
     }
   }
 });

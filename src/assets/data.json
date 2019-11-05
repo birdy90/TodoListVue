@@ -1,13 +1,13 @@
 {
   "data": [
-    "Написать тестовое задание",
-    "Запушить его в GitHub",
-    "Сверстать",
-    "Сделать добавление",
-    "Сделать удаление",
-    "Постраничный вывод",
-    "Сделать выполнение элементов",
-    "Хранение во Vuex",
-    "Заполнение из JSON"
+    {"id": "4ksfzz8hxsnnhdhxjfdjzh", "checked": false, "value": "Написать тестовое задание"},
+    {"id": "r45xgq99kqs1ke74nnp3e", "checked": false, "value": "Запушить его в GitHub"},
+    {"id": "n8mxkxejebm0sypzwd6ul", "checked": false, "value": "Сверстать"},
+    {"id": "at6axsrudioyfjcbnbal5a", "checked": false, "value": "Сделать добавление"},
+    {"id": "te4722u5t1engmxm1z1rr", "checked": false, "value": "Сделать удаление"},
+    {"id": "pgyt5is97nqvhxc9wh8j6s", "checked": false, "value": "Постраничный вывод"},
+    {"id": "xpdciti42fpd775p3ll6rt", "checked": false, "value": "Сделать выполнение элементов"},
+    {"id": "rcvfpe8l27zc0rtt7fiqn", "checked": false, "value": "Хранение во Vuex"},
+    {"id": "l2x7iq5gdzw9ld33olgye", "checked": false, "value": "Заполнение из JSON"}
   ]
 }
